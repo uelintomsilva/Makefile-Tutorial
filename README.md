@@ -80,7 +80,21 @@ Explain functional commands:<br />
 **main.o**: is a process to compile main.cpp in main.o intermediate file<br />
 **clean**: here we order to exclude intermediate files and output file. ```rm -f``` is a bash cmd to remove files.<br />
 
-Now in your terminal type ```make```. In your folder the file ```main``` show up.
+Now in your terminal type ```make```. In your folder the file ```main and main.o``` show up.
+```console
+vitor@DESKTOP-2KPPLO8:~/test$ ls
+main.cpp  Makefile
+vitor@DESKTOP-2KPPLO8:~/test$ make
+g++ -g -c -Wall main.cpp
+g++ -g main.o -o main
+vitor@DESKTOP-2KPPLO8:~/test$ ls
+main  main.cpp  main.o  Makefile
+```
+You can run your code
+```console
+vitor@DESKTOP-2KPPLO8:~/test$ ./main 
+Hello Makefile
+```
 
 ## Appendix
 
