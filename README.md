@@ -4,7 +4,7 @@ Simple makefile tutorial for beginners.<br />
 Build on:
 - Ubuntu 16.04
 - g++ 5.4.0
-- c++ -std=11/-std=17
+- c++ -std=11/-std=14/-std=17
 - GNU make 4.1
   
 (if make is not installed type in terminal: ```sudo apt-get install build-essential```)
@@ -21,7 +21,7 @@ Makefile text is constituted of three major tiles:
     <recipes>
 ```
 **Target** normally is the name of object files or actions like make/clean.<br />
-**Prerequisite** can be exist or not. If exist is the name of input(s) file(s) to generate object file.<br />
+**Prerequisite** can exist or not. If exist is the name of input(s) file(s) to generate object file.<br />
 **Recipes** is the command option for bash execution. Can be multiple commands using &&.
 
 **Caracteristcs of symbols:**<br />
@@ -30,9 +30,40 @@ Makefile text is constituted of three major tiles:
 - To use variable later in the file use $(VARIABLE_NAME) or ${VARIABLE NAME}. The parens/brackets are mandatory.
 - Starting the recipe with @ will not print the command on terminal.<br /><br />
 
-**Let's build a simple c++ code with a basic Makefile**<br />
+**Let's build a simple c++ code with a basic Makefile**<br /><br />
+First of all create main.cpp and Makefile (without extension) in same folder:<br /><br />
+**main.cpp**
+```c++
+#include <iostream>
 
+int main(){
+  std::cout << "Hello Makefile" << std::endl;
+  }
+```
+<br />
+<br />
 
+**Makefile**
+```bash
+
+SOURCE = main.cpp
+HEADER =
+OBJS = main.o
+OUT = main
+CC = g++
+FLAGS = -g -c -Wall
+LFLAGS = 
+
+all: $(OBJS)
+  $(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
+  
+main.o: main.cpp
+  $(CC) $(FLAGS) main.cpp
+  
+clean:
+  rm -f $(OBJS) $(OUT)
+  
+```
 
 ## Appendix
 
@@ -41,9 +72,9 @@ Makefile text is constituted of three major tiles:
     <dd>
     </dd>
   </dt>
-  <dt> Command make workflow
+  <dt> Command MAKE workflow
     <dd><br />
-      &emsp;When make recompiles the editor, each changed C source file must be recompiled. If a header file has changed, each C source file that includes the header file must be recompiled to be safe. Each compilation produces an object file corresponding to the source file. Finally, if any source file has been recompiled, all the object files, whether newly made or saved from previous compilations, must be linked together to produce the new executable editor.
+      &emsp;When make recompiles the editor, each changed C source file must be recompiled. If a header file has changed, each C++ source file that includes the header file must be recompiled to be safe. Each compilation produces an object file corresponding to the source file. Finally, if any source file has been recompiled, all the object files, whether newly made or saved from previous compilations, must be linked together to produce the new executable editor.
     </dd>
   </dt>
 </dl>
