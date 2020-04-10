@@ -7,7 +7,7 @@ Build on:
 - c++ -std=11/-std=14/-std=17
 - GNU make 4.1
   
-(if make is not installed type in terminal: ```sudo apt-get install build-essential```)
+(if ```make``` is not installed type in terminal: ```sudo apt-get install build-essential```)
 
 
 ## Understanding how a makefile works
@@ -65,6 +65,23 @@ clean:
   
 ```
 
+<br />Explaning MACROS in above code:<br />
+
+**SOURCE**: .cpp files to compile<br />
+**HEADER**: .h/.hpp files used in #include<br />
+**OBJS**: .o Intermediate files on compiler process<br />
+**OUT**: name of output file<br />
+**CC**: compiler version in use<br />
+**LFLAGS**: extra flags to lexical<br /><br />
+
+Explain functional commands:<br />
+
+**all**: when we run ```make``` this process will be call and execute what is in recipes<br />
+**main.o**: is a process to compile main.cpp in main.o intermediate file<br />
+**clean**: here we order to exclude intermediate files and output file. rm -f is a bash cmd to remove files.<br />
+
+
+
 ## Appendix
 
 <dl>
@@ -75,6 +92,10 @@ clean:
   <dt> Command MAKE workflow
     <dd><br />
       &emsp;When make recompiles the editor, each changed C source file must be recompiled. If a header file has changed, each C++ source file that includes the header file must be recompiled to be safe. Each compilation produces an object file corresponding to the source file. Finally, if any source file has been recompiled, all the object files, whether newly made or saved from previous compilations, must be linked together to produce the new executable editor.
+    </dd>
+  </dt>
+  <dt> Compiler flags
+    <dd>
     </dd>
   </dt>
 </dl>
