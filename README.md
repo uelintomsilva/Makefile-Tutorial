@@ -95,6 +95,13 @@ You can run your code
 vitor@DESKTOP-2KPPLO8:~/test$ ./main 
 Hello Makefile
 ```
+Using ```make clean``` cmd we remove additional files in folder
+```console
+vitor@DESKTOP-2KPPLO8:~/test$ make clean
+rm -f main.o main
+vitor@DESKTOP-2KPPLO8:~/test$ ls
+main.cpp  Makefile
+```
 
 ## Appendix
 
@@ -110,6 +117,7 @@ Hello Makefile
   </dt>
   <dt> Compiler flags
     <dd>
+	&emsp;g++ [-c|-S|-E] [-std=standard] [-g] [-pg] [-Olevel] [-Wwarn...] [-pedantic] [-Idir...] [-Ldir...] [-Dmacro[=defn]...] [-Umacro] [-foption...] [-mmachine-option...] [-o outfile] [@file] infile... 
     </dd>
   </dt>
 </dl>
