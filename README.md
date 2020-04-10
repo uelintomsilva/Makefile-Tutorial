@@ -103,6 +103,169 @@ vitor@DESKTOP-2KPPLO8:~/test$ ls
 main.cpp  Makefile
 ```
 
+## Building a more "complex" makefile
+
+&emsp;This time we will need create the files ```main.cpp``` ```Employee.cpp``` ```Person.cpp``` ```Student.cpp``` source codes and ```Employee.h``` ```Person.h``` ```Student.h``` header files.<br />
+
+**main.cpp**
+```c++
+#include <iostream>
+#include <string>
+
+#include "Person.h"
+#include "Student.h"
+#include "Employee.h"
+
+
+int main(){
+
+    Person monica("monica");
+    monica.print();
+
+    Student demi("Demi", "MIT");
+    demi.print();
+
+    Employee charles("Charles", "Microsoft");
+    charles.print();
+
+    
+}
+```
+
+**Person.cpp**
+```c++
+#include <string>
+#include <iostream>
+#include "Person.h"
+
+Person::Person(std::string name) : m_name(name){}
+
+void Person::print(){
+    std::cout << "Person " << m_name << std::endl;
+}
+```
+
+**Student.cpp**
+```c++
+#include <string>
+#include <iostream>
+
+#include "Person.h"
+#include "Student.h"
+
+Student::Student(std::string name, std::string university) : Person(name), m_university(university){}
+
+void Student::print(){
+    Person::print();
+    std::cout << "University " << m_university << std::endl;
+}
+```
+**Employee.cpp**
+```c++
+#include <string>
+#include <iostream>
+
+#include "Person.h"
+#include "Employee.h"
+
+Employee::Employee(std::string name, std::string company) : Person(name), m_company(company){}
+
+void Employee::print(){
+    Person::print();
+    std::cout << "Company " << m_company << std::endl;
+}
+```
+**Student.h**
+```c++
+class Student : public Person{
+
+    public:
+        Student(std::string name, std::string univerty);
+        void print();
+
+    private:
+        std::string m_university;
+};
+```
+**Person.h**
+```c++
+class Person{
+    public:
+        Person(std::string name);
+        virtual void print();
+
+    private:
+        std::string m_name;
+};
+```
+**Employee.h**
+```c++
+class Employee : public Person{
+    public:
+        Employee(std::string name, std::string company);
+        void print();
+
+    private:
+        std::string m_company;
+};
+```
+**Makefile**
+```bash
+OBJS	= main.o Employee.o Person.o Student.o
+SOURCE	= main.cpp Employee.cpp Person.cpp Student.cpp
+HEADER	= Employee.h Person.h Student.h
+OUT	= person
+CC	 = g++
+FLAGS	 = -g -c -Wall
+LFLAGS	 = 
+
+all: $(OBJS)
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS) && rm -f $(OBJS) && ./$(OUT)
+
+main.o: main.cpp
+	$(CC) $(FLAGS) main.cpp
+
+Employee.o: Employee.cpp
+	$(CC) $(FLAGS) Employee.cpp
+
+Student.o: Student.cpp
+	$(CC) $(FLAGS) Student.cpp
+
+Person.o: Person.cpp
+	$(CC) $(FLAGS) Person.cpp
+
+
+clean:
+	rm -f $(OBJS) $(OUT)
+```
+
+Running Makefile
+```console
+vitor@DESKTOP-2KPPLO8:~/cplusplus$ ls
+car.cpp  Employee.cpp  main.cpp  Person.cpp  Student.cpp
+car.h    Employee.h    Makefile  Person.h    Student.h
+vitor@DESKTOP-2KPPLO8:~/cplusplus$ make
+g++ -g -c -Wall main.cpp
+g++ -g -c -Wall Employee.cpp
+g++ -g -c -Wall Person.cpp
+g++ -g -c -Wall Student.cpp
+g++ -g main.o Employee.o Person.o Student.o -o person  && rm -f main.o Employee.o Person.o Student.o && ./person
+Person monica
+Person Demi
+University MIT
+Person Charles
+Company Microsoft
+vitor@DESKTOP-2KPPLO8:~/cplusplus$ ls
+car.cpp  Employee.cpp  main.cpp  person      Person.h     Student.h
+car.h    Employee.h    Makefile  Person.cpp  Student.cpp
+vitor@DESKTOP-2KPPLO8:~/cplusplus$ make clean
+rm -f main.o Employee.o Person.o Student.o person
+vitor@DESKTOP-2KPPLO8:~/cplusplus$ ls
+car.cpp  Employee.cpp  main.cpp  Person.cpp  Student.cpp
+car.h    Employee.h    Makefile  Person.h    Student.h
+vitor@DESKTOP-2KPPLO8:~/cplusplus$
+```
+
 ## Appendix
 
 <dl>
