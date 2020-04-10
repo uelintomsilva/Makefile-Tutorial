@@ -24,7 +24,7 @@ Makefile text is constituted of three major tiles:
 **Prerequisite** can exist or not. If exist is the name of input(s) file(s) to generate object file.<br />
 **Recipes** is the command option for bash execution. Can be multiple commands using &&.
 
-**Caracteristcs of symbols:**<br />
+**Characteristics of symbols:**<br />
 - Lines beginning with a hash (#) are comments and are ignored.
 - Variables are in ALL_CAPS followed by a = sign. Its best practice to place all variables at the top of the file.
 - To use variable later in the file use $(VARIABLE_NAME) or ${VARIABLE NAME}. The parens/brackets are mandatory.
@@ -71,8 +71,8 @@ clean:
 **HEADER**: .h/.hpp files used in #include<br />
 **OBJS**: .o Intermediate files on compiler process<br />
 **OUT**: name of output file<br />
-**CC**: compiler version in use<br />
-**LFLAGS**: extra flags to lexical<br /><br /> 
+**CC**: compiler in use<br />
+**LFLAGS**: extra flags to lexical process in compiler<br /><br /> 
 
 Explain functional commands:<br />
 
