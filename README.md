@@ -107,7 +107,7 @@ main.cpp  Makefile
 
 <dl>
   <dt> What is object files?
-    <dd>
+    <dd>&emsp;A C++ object file is an intermediate file produced by a C++ compiler from a C++ implementation file and the C++ header files that the implementation file includes. The C++ linker produces the output executable or library of your project from your C++ object files.
     </dd>
   </dt>
   <dt> Command MAKE workflow
@@ -116,7 +116,7 @@ main.cpp  Makefile
     </dd>
   </dt>
   <dt> Compiler flags
-    <dd>
+    <dd><br />
 	&emsp;g++ [-c|-S|-E] [-std=standard] [-g] [-pg] [-Olevel] [-Wwarn...] [-pedantic] [-Idir...] [-Ldir...] [-Dmacro[=defn]...] [-Umacro] [-foption...] [-mmachine-option...] [-o outfile] [@file] infile... 
     </dd>
   </dt>
