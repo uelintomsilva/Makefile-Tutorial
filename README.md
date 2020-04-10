@@ -55,13 +55,13 @@ FLAGS = -g -c -Wall
 LFLAGS = 
 
 all: $(OBJS)
-  $(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
   
 main.o: main.cpp
-  $(CC) $(FLAGS) main.cpp
+	$(CC) $(FLAGS) main.cpp
   
 clean:
-  rm -f $(OBJS) $(OUT)
+	rm -f $(OBJS) $(OUT)
   
 ```
 
@@ -72,15 +72,15 @@ clean:
 **OBJS**: .o Intermediate files on compiler process<br />
 **OUT**: name of output file<br />
 **CC**: compiler version in use<br />
-**LFLAGS**: extra flags to lexical<br /><br />
+**LFLAGS**: extra flags to lexical<br /><br /> 
 
 Explain functional commands:<br />
 
 **all**: when we run ```make``` this process will be call and execute what is in recipes<br />
 **main.o**: is a process to compile main.cpp in main.o intermediate file<br />
-**clean**: here we order to exclude intermediate files and output file. rm -f is a bash cmd to remove files.<br />
+**clean**: here we order to exclude intermediate files and output file. ```rm -f``` is a bash cmd to remove files.<br />
 
-
+Now in your terminal type ```make```. In your folder the file ```main``` show up.
 
 ## Appendix
 
